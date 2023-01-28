@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .block-item{
+            width: 150px;
+            border: 5px solid;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom:10px;
+            border-color: rgb(171, 83, 83);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .block-item[block-color='1'],
+        .block-item[block-color='2'],
+        .block-item[block-color='3'] {
+           background-color: aquamarine;
+        }
+        .block-item[block-color='4'],
+        .block-item[block-color='5'],
+        .block-item[block-color='6'] {
+            background-color: rgb(121, 232, 90);
+        }
+        .block-item[block-color='7'],
+        .block-item[block-color='8'],
+        .block-item[block-color='9'] {
+            background-color: rgb(239, 227, 59);
+        }
+        .hr{
+            color:red;
+            border: 5px solid;
+        }
+    </style>
+</head>
+<body>
+    <script>
+       let data = [
+        {
+        title:"7:30",
+        image:"./2.jpeg",
+        description:"Paris",
+       },
+     {
+        title:"8:00",
+        image:"./1.jpeg",
+        description:"Italy",
+       },
+       {
+        title:"9:00",
+        image:"./3.jpeg",
+        description:"walk",
+       },
+        {
+        title:"10:30",
+        image:"./4.jpeg",
+        description:"ship",
+       },
+      {
+        title:"12:00",
+        image:"./5.jpeg",
+        description:"laguage lesson",
+       },
+       {
+        title:"14:30",
+        image:"./6.jpeg",
+        description:"coffe time",
+       },
+       {
+        title:"16:00",
+        image:"./7.jpeg",
+        description:"gim",
+       },
+      {
+        title:"17:30",
+        image:"./8.jpeg",
+        description:"driving",
+       },
+       {
+        title:"18:00",
+        image:"./9.jpeg",
+        description:"Hot Tub",
+       }
+    ];
+    
+        
+       
+       
+       
+       let container = document.createElement('div')
+       container.classList.add("container")
+
+        console.log('container')
+        
+
+        const renderBlock = () => {
+            let fragment = new DocumentFragment()
+
+            data.map((item,id) => {
+                let block = document.createElement("div")
+                block.classList.add('block-item')
+                 block.setAttribute('block-color',id+1)
+                block.innerHTML=`
+                <div>
+                    <div>${item.title}</div>
+                    <img width='50px'src= '${item.image}'/>
+                    <div>${item.description}</div>
+                </div> <hr/>`
+                fragment.append(block)
+                console.log(item)
+           
+            })
+            return fragment
+        };
+        container.append(renderBlock())
+
+        document.body.append(container)
+
+        console.log(container)
+    </script>
+</body>
+</html>
